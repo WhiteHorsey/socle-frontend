@@ -1,26 +1,8 @@
-import React from "react";
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import "./App.css";
-import { ErrorPage, HomePage, LoginPage, RegisterPage } from "./pages";
+import React, { useEffect } from "react";
+import { Routes } from "./routes";
 
-const router = createBrowserRouter([
-  {
-    path: "/login",
-    element: <LoginPage />,
-  },
-  {
-    path: "/register",
-    element: <RegisterPage />,
-  },
-  {
-    path: "/",
-    element: <HomePage />,
-    errorElement: <ErrorPage />,
-  },
-]);
-
-function App() {
-  return <RouterProvider router={router} />;
-}
+const App = () => {
+  return <Routes isAuthorized={false} />;
+};
 
 export default App;

@@ -1,6 +1,6 @@
 // Layouts
-import AnonymousLayout from "../layouts/AnonymousLayout";
-import MainLayout from "../layouts/MainLayout";
+import { MainLayout, AnonymousLayout } from "../layouts";
+import { renderRoutes } from "./generate-routes.jsx";
 
 // Pages
 import { LoginPage, RegisterPage, HomePage, ProfilePage, ErrorPage } from "../pages";
@@ -8,20 +8,19 @@ import { LoginPage, RegisterPage, HomePage, ProfilePage, ErrorPage } from "../pa
 export const routes = [
   {
     layout: AnonymousLayout,
+    isPublic: true,
     routes: [
       {
         name: "login",
         title: "Login page",
         component: LoginPage,
         path: "/login",
-        isPublic: true,
       },
       {
         name: "register",
         title: "Register page",
         component: RegisterPage,
         path: "/register",
-        isPublic: true,
       },
     ],
   },
@@ -43,3 +42,6 @@ export const routes = [
     ],
   },
 ];
+
+// Just add this line
+export const Routes = renderRoutes(routes);

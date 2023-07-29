@@ -10,12 +10,11 @@ const generateFlattenRoutes = (routes) => {
 
 export const renderRoutes = (mainRoutes) => {
   const Routes = ({ isAuthorized }) => {
-    const layouts = mainRoutes.map(({ layout: Layout, routes }, index) => {
+    const layouts = mainRoutes.map(({ layout: Layout, routes, isPublic }, index) => {
       const subRoutes = generateFlattenRoutes(routes);
-
       return (
         <Route key={index} element={<Layout />}>
-          <Route element={<ProtectedRoute isAuthorized={isAuthorized} />}>
+          <Route element={<ProtectedRoute isPublic={isPublic} isAuthorized={isAuthorized} />}>
             {subRoutes.map(({ component: Component, path, name }) => {
               return Component && path && <Route key={name} element={<Component />} path={path} />;
             })}
